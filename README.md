@@ -10,6 +10,7 @@ A multi-language practice environment where you can solve the same coding challe
 - **Node.js 16+** and npm
 - **SQLite3** (for SQL challenges)
 - **Git**
+- **Chrome** (optional, for Angular tests)
 
 ### Setup
 
@@ -20,10 +21,16 @@ cd practice-labs
 # Install JavaScript dependencies
 cd js-practice && npm install && cd ..
 
+# OPTIONAL: Install Angular dependencies
+cd angular-practice && npm install && cd ..
+
 # Verify setup - run all tests
-./gradlew testAll         # Java tests
+./gradlew testAll                    # Java tests
 cd js-practice && npm test && cd ..  # JavaScript tests
 ./scripts/run-sql-tests.sh           # SQL tests
+
+# Optional: Angular tests
+cd angular-practice && npm test && cd ..
 ```
 
 ## Core Concept: Latest-Attempt Resolution
@@ -168,6 +175,50 @@ describe("MyChallenge", () => {
 });
 ```
 
+### 🅰️ Angular (Karma + Jasmine)
+
+**Note:** Angular is optional. The repository works fine without it.
+
+#### Run Tests
+
+```bash
+cd angular-practice
+
+# Run all tests once
+npm test
+
+# Watch mode (re-run on changes)
+npm run test:watch
+
+# With coverage
+npm run test:coverage
+```
+
+#### Create New Challenge
+
+```bash
+# Create new challenge
+./scripts/new-angular-challenge.sh MyChallenge service
+
+# Create version 2
+./scripts/new-angular-challenge.sh MyChallenge service 2
+```
+
+#### How Version Switching Works
+
+Angular uses a **barrel file pattern** instead of automatic discovery:
+
+```typescript
+// challenges/my-challenge/index.ts (barrel file)
+// Change this line to switch versions!
+export { MyChallengeV2Service as CurrentMyChallengeService } from './my-challenge-v2.service';
+
+// Test file automatically uses "Current" version
+import { CurrentMyChallengeService } from './index';
+```
+
+See [angular-practice/README.md](angular-practice/README.md) for more details.
+
 ### 🗄️ SQL (SQLite)
 
 #### Run Tests
@@ -183,6 +234,45 @@ describe("MyChallenge", () => {
 3. Save expected output: `sql-practice/expected/my_query.txt`
 
 See [sql-practice/README.md](sql-practice/README.md) for more details.
+
+---
+
+## Angular Module (Optional)
+
+The Angular module uses a **barrel file pattern** due to TypeScript's compile-time requirements.
+
+### How It Works
+
+Unlike Java/JS which can discover files at runtime, Angular requires manual version management:
+
+```typescript
+// src/challenges/largest-sum/index.ts
+export { LargestSumService as CurrentLargestSumService } from './largest-sum.service';
+// export { LargestSumV2Service as CurrentLargestSumService } from './largest-sum-v2.service';
+```
+
+**To test a different version:** Comment/uncomment the appropriate export line.
+
+### Setup
+
+```bash
+cd angular-practice
+npm install
+npm test
+```
+
+### Create New Challenge
+
+```bash
+./scripts/new-angular-challenge.sh MyChallenge
+```
+
+This generates:
+- Service file: `src/challenges/my-challenge/my-challenge.service.ts`
+- Test file: `src/challenges/my-challenge/my-challenge.service.spec.ts`
+- Barrel file: `src/challenges/my-challenge/index.ts`
+
+---
 
 ## Example Challenge: LargestSum
 
@@ -203,6 +293,7 @@ Find the sum of the two largest integers in a list/array.
 
 - Java: [LargestSum.java](java-practice/src/main/java/practice/largestsum/LargestSum.java)
 - JavaScript: [largestSum.js](js-practice/practice/largestSum.js)
+- Angular: [largest-sum.service.ts](angular-practice/src/challenges/largest-sum/largest-sum.service.ts)
 
 ## Project Structure
 
@@ -233,8 +324,18 @@ practice-labs/
 │   ├── expected/               # Expected outputs
 │   └── seed.sql                # Test data
 │
+├── angular-practice/           # Angular module (optional)
+│   ├── src/challenges/         # Challenge implementations
+│   │   └── largest-sum/
+│   │       ├── index.ts        # Barrel file (manual switching)
+│   │       ├── largest-sum.service.ts
+│   │       └── largest-sum-v2.service.ts  (create more attempts)
+│   └── src/services/
+│       └── target-resolver.service.ts
+│
 ├── scripts/
 │   ├── new-java-challenge.sh   # Java challenge generator
+│   ├── new-angular-challenge.sh  # Angular challenge generator
 │   └── run-sql-tests.sh        # SQL test runner
 │
 └── README.md                   # This file
@@ -248,7 +349,9 @@ practice-labs/
 | **Run all tests (aggregate)**  | `./gradlew testAll`                               |
 | **Run JS tests**               | `cd js-practice && npm test`                      |
 | **Run SQL tests**              | `./scripts/run-sql-tests.sh`                      |
+| **Run Angular tests**          | `cd angular-practice && npm test`                 |
 | **Create Java challenge**      | `./scripts/new-java-challenge.sh ChallengeName`   |
+| **Create Angular challenge**   | `./scripts/new-angular-challenge.sh ChallengeName`|
 | **Create Java attempt #N**     | `./scripts/new-java-challenge.sh ChallengeName N` |
 | **Test specific Java attempt** | `PRACTICE_TARGET=LargestSum2 ./gradlew test`      |
 | **Test specific JS attempt**   | `PRACTICE_TARGET=largestSum2 npm test`            |
