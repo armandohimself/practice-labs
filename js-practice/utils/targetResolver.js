@@ -1,10 +1,10 @@
 // Import Node.js modules for file system operations
-const fs = require("fs");      // File system - read files and directories
-const path = require("path");  // Path manipulation - join paths correctly
+const fs = require("fs"); // File system - read files and directories
+const path = require("path"); // Path manipulation - join paths correctly
 
 /**
  * TargetResolver - Automatically finds the latest implementation of a challenge
- * 
+ *
  * HOW IT WORKS:
  * -------------
  * 1. Scans the practice directory for .js files matching the base name
@@ -20,7 +20,7 @@ const path = require("path");  // Path manipulation - join paths correctly
  *
  * By default, returns the highest numbered attempt.
  * Override with environment variable: PRACTICE_TARGET=largestSum2
- * 
+ *
  * EXAMPLE USAGE:
  * --------------
  *   // In your test file:
@@ -30,7 +30,7 @@ const path = require("path");  // Path manipulation - join paths correctly
 class TargetResolver {
   /**
    * Find and require the target implementation module.
-   * 
+   *
    * PROCESS:
    * --------
    * 1. Check for PRACTICE_TARGET environment variable
@@ -72,7 +72,7 @@ class TargetResolver {
 
   /**
    * Find the latest numbered attempt of a challenge.
-   * 
+   *
    * ALGORITHM:
    * ----------
    * 1. Read all files in the practice directory
@@ -80,7 +80,7 @@ class TargetResolver {
    * 3. Extract version numbers (no number = 0)
    * 4. Sort by version number (descending)
    * 5. Return the highest version
-   * 
+   *
    * EXAMPLE:
    * For baseName="largestSum", finds: largestSum.js, largestSum2.js, largestSum3.js
    * Returns: "largestSum3.js"
@@ -97,7 +97,7 @@ class TargetResolver {
 
     // Read all files in directory
     const files = fs.readdirSync(dir);
-    
+
     // Create regex pattern to match: baseName + optional digits + .js
     // Example: /^largestSum(\d*)\.js$/
     // This matches: largestSum.js, largestSum2.js, largestSum10.js
@@ -105,7 +105,7 @@ class TargetResolver {
 
     // Filter and transform matching files
     const matches = files
-      .filter((file) => pattern.test(file))  // Keep only matching files
+      .filter((file) => pattern.test(file)) // Keep only matching files
       .map((file) => {
         const match = file.match(pattern);
         // Extract number from filename (empty string -> 0, "2" -> 2)
