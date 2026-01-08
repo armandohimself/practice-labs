@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
+
+// Aggregate task to run all tests
+task testAll {
+    group = 'verification'
+    description = 'Run all tests across all modules'
+
+    dependsOn ':java-practice:test'
+
+    doLast {
+        println '\n========================================='
+        println '✓ All tests completed!'
+        println '========================================='
+    }
+}
