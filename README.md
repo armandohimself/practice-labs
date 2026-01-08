@@ -211,10 +211,10 @@ Angular uses a **barrel file pattern** instead of automatic discovery:
 ```typescript
 // challenges/my-challenge/index.ts (barrel file)
 // Change this line to switch versions!
-export { MyChallengeV2Service as CurrentMyChallengeService } from './my-challenge-v2.service';
+export { MyChallengeV2Service as CurrentMyChallengeService } from "./my-challenge-v2.service";
 
 // Test file automatically uses "Current" version
-import { CurrentMyChallengeService } from './index';
+import { CurrentMyChallengeService } from "./index";
 ```
 
 See [angular-practice/README.md](angular-practice/README.md) for more details.
@@ -247,7 +247,7 @@ Unlike Java/JS which can discover files at runtime, Angular requires manual vers
 
 ```typescript
 // src/challenges/largest-sum/index.ts
-export { LargestSumService as CurrentLargestSumService } from './largest-sum.service';
+export { LargestSumService as CurrentLargestSumService } from "./largest-sum.service";
 // export { LargestSumV2Service as CurrentLargestSumService } from './largest-sum-v2.service';
 ```
 
@@ -268,6 +268,7 @@ npm test
 ```
 
 This generates:
+
 - Service file: `src/challenges/my-challenge/my-challenge.service.ts`
 - Test file: `src/challenges/my-challenge/my-challenge.service.spec.ts`
 - Barrel file: `src/challenges/my-challenge/index.ts`
@@ -343,19 +344,19 @@ practice-labs/
 
 ## Commands Reference
 
-| Task                           | Command                                           |
-| ------------------------------ | ------------------------------------------------- |
-| **Run all Java tests**         | `./gradlew :java-practice:test`                   |
-| **Run all tests (aggregate)**  | `./gradlew testAll`                               |
-| **Run JS tests**               | `cd js-practice && npm test`                      |
-| **Run SQL tests**              | `./scripts/run-sql-tests.sh`                      |
-| **Run Angular tests**          | `cd angular-practice && npm test`                 |
-| **Create Java challenge**      | `./scripts/new-java-challenge.sh ChallengeName`   |
-| **Create Angular challenge**   | `./scripts/new-angular-challenge.sh ChallengeName`|
-| **Create Java attempt #N**     | `./scripts/new-java-challenge.sh ChallengeName N` |
-| **Test specific Java attempt** | `PRACTICE_TARGET=LargestSum2 ./gradlew test`      |
-| **Test specific JS attempt**   | `PRACTICE_TARGET=largestSum2 npm test`            |
-| **Watch JS tests**             | `cd js-practice && npm run test:watch`            |
+| Task                           | Command                                            |
+| ------------------------------ | -------------------------------------------------- |
+| **Run all Java tests**         | `./gradlew :java-practice:test`                    |
+| **Run all tests (aggregate)**  | `./gradlew testAll`                                |
+| **Run JS tests**               | `cd js-practice && npm test`                       |
+| **Run SQL tests**              | `./scripts/run-sql-tests.sh`                       |
+| **Run Angular tests**          | `cd angular-practice && npm test`                  |
+| **Create Java challenge**      | `./scripts/new-java-challenge.sh ChallengeName`    |
+| **Create Angular challenge**   | `./scripts/new-angular-challenge.sh ChallengeName` |
+| **Create Java attempt #N**     | `./scripts/new-java-challenge.sh ChallengeName N`  |
+| **Test specific Java attempt** | `PRACTICE_TARGET=LargestSum2 ./gradlew test`       |
+| **Test specific JS attempt**   | `PRACTICE_TARGET=largestSum2 npm test`             |
+| **Watch JS tests**             | `cd js-practice && npm run test:watch`             |
 
 ## CI/CD
 

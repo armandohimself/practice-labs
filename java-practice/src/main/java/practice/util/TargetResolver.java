@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 /**
  * TargetResolver automatically finds the latest implementation of a challenge.
- * 
+ *
  * HOW IT WORKS:
  * -------------
  * 1. Scans the classpath for .class files matching the base name
@@ -24,7 +24,7 @@ import java.util.regex.Pattern;
  *
  * By default, it returns the highest numbered attempt.
  * You can override with environment variable PRACTICE_TARGET=LargestSum2
- * 
+ *
  * EXAMPLE USAGE:
  * --------------
  *   // In your test class:
@@ -38,7 +38,7 @@ public class TargetResolver {
 
     /**
      * Find and instantiate the target implementation class.
-     * 
+     *
      * PROCESS:
      * --------
      * 1. Check for PRACTICE_TARGET environment variable
@@ -75,7 +75,7 @@ public class TargetResolver {
 
     /**
      * Find the latest numbered attempt of a challenge.
-     * 
+     *
      * ALGORITHM:
      * ----------
      * 1. Convert package name to file path (. -> /)
@@ -83,11 +83,11 @@ public class TargetResolver {
      * 3. List all .class files that start with baseName
      * 4. Extract version numbers from filenames
      * 5. Return the class with the highest version number
-     * 
+     *
      * EXAMPLE:
      * For baseName="LargestSum", finds: LargestSum.class, LargestSum2.class, LargestSum3.class
      * Returns: "practice.largestsum.LargestSum3"
-     * 
+     *
      * @param basePackage Package to search (e.g., "practice.largestsum")
      * @param baseName Base class name (e.g., "LargestSum")
      * @return Full class name of latest version (e.g., "practice.largestsum.LargestSum3")
@@ -148,17 +148,17 @@ public class TargetResolver {
 
     /**
      * Extract the attempt number from a class name.
-     * 
+     *
      * EXAMPLES:
      * ---------
      * LargestSum   -> 0 (no number, so it's attempt 0/baseline)
      * LargestSum2  -> 2
      * LargestSum10 -> 10
-     * 
+     *
      * HOW IT WORKS:
      * Uses regex to find digits at the end of the class name.
      * If no digits found, returns 0 (making baseline version lowest priority).
-     * 
+     *
      * @param className Simple class name (e.g., "LargestSum2")
      * @return Version number (2 for LargestSum2, 0 for LargestSum)
      */

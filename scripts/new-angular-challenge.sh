@@ -98,15 +98,15 @@ import { Injectable } from '@angular/core';
 
 /**
  * $SERVICE_CLASS
- * 
+ *
  * PROBLEM:
  * [TODO: Describe the challenge problem here]
- * 
+ *
  * EXAMPLES:
  * [TODO: Add example inputs and outputs]
  *   Input: ...
  *   Output: ...
- * 
+ *
  * REQUIREMENTS:
  * [TODO: List any special requirements or constraints]
  */
@@ -119,13 +119,13 @@ export class $SERVICE_CLASS {
 
   /**
    * [TODO: Add method description]
-   * 
+   *
    * ALGORITHM:
    * [TODO: Describe your approach]
-   * 
+   *
    * TIME COMPLEXITY: [TODO]
    * SPACE COMPLEXITY: [TODO]
-   * 
+   *
    * @param input - [TODO: Describe parameter]
    * @returns [TODO: Describe return value]
    */
@@ -148,20 +148,20 @@ import { Current${CHALLENGE_NAME}Service } from './index';
 
 /**
  * Tests for $CHALLENGE_NAME Challenge
- * 
+ *
  * IMPORTANT: These tests import from the barrel file (./index)
  * This means they automatically test whichever version is exported
  * as "Current${CHALLENGE_NAME}Service" in index.ts
- * 
+ *
  * TO TEST A DIFFERENT VERSION:
  * Just update the export in index.ts - NO need to change this test file!
- * 
+ *
  * HOW TO ADD TESTS:
  * -----------------
  * 1. Create a describe() block for a group of related tests
  * 2. Use it() to define individual test cases
  * 3. Use expect() to make assertions
- * 
+ *
  * EXAMPLE:
  *   it('should handle basic case', () => {
  *     expect(service.solve(input)).toBe(expected);
@@ -181,29 +181,29 @@ describe('$CHALLENGE_NAME Challenge (Current Implementation)', () => {
   });
 
   describe('Basic functionality', () => {
-    
+
     it('should handle basic case', () => {
       // TODO: Add your test
       // const result = service.solve(input);
       // expect(result).toBe(expected);
       pending('Add your test implementation');
     });
-    
+
     // TODO: Add more test cases
   });
 
   describe('Edge cases', () => {
-    
+
     it('should handle null input', () => {
       // TODO: Test null/undefined handling
       pending('Add your test implementation');
     });
-    
+
     it('should handle empty input', () => {
       // TODO: Test empty input handling
       pending('Add your test implementation');
     });
-    
+
     // TODO: Add more edge case tests
   });
 });
@@ -221,20 +221,20 @@ if [ ! -f "$INDEX_TS" ]; then
     cat > "$INDEX_TS" <<EOF
 /**
  * Barrel File for $CHALLENGE_NAME Challenge
- * 
+ *
  * WHAT IS A BARREL FILE?
  * ----------------------
  * A barrel file (index.ts) re-exports items from multiple files.
  * This lets tests import from one location and automatically test
  * whichever version you specify as "current".
- * 
+ *
  * HOW TO USE:
  * -----------
  * 1. Create multiple versions (v1, v2, v3, etc.)
  * 2. Export your chosen version as "Current${CHALLENGE_NAME}Service"
  * 3. Tests import from this file
  * 4. To test a different version, just change the export below
- * 
+ *
  * TO SWITCH VERSIONS:
  * Change the line below to export a different version!
  */

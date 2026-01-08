@@ -40,3 +40,20 @@ coverage/
 *.sqlite
 *.sqlite3
 sql-practice/data/*.db
+sql-practice/actual_output.txt
+
+# Angular
+angular-practice/.angular/
+angular-practice/dist/
+angular-practice/node_modules/
+angular-practice/.angular-cache/
+
+# Build artifacts
+java-practice/build/
+js-practice/coverage/
+
+# Temporary and test files
+*.tmp
+*.temp
+*~
+.cache/

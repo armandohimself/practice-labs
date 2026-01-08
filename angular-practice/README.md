@@ -18,6 +18,7 @@ npm install
 Unlike Java and JavaScript which use dynamic class/file discovery, Angular uses a **barrel file pattern** for managing multiple implementations.
 
 **Structure:**
+
 ```
 src/challenges/my-challenge/
 ├── my-challenge.service.ts       # Version 1
@@ -28,18 +29,20 @@ src/challenges/my-challenge/
 ```
 
 **Barrel File (index.ts):**
+
 ```typescript
 // Change this line to test a different version!
-export { MyChallengeV2Service as CurrentMyChallengeService } from './my-challenge-v2.service';
+export { MyChallengeV2Service as CurrentMyChallengeService } from "./my-challenge-v2.service";
 
 // Individual exports
-export { MyChallengeService } from './my-challenge.service';
-export { MyChallengeV2Service } from './my-challenge-v2.service';
+export { MyChallengeService } from "./my-challenge.service";
+export { MyChallengeV2Service } from "./my-challenge-v2.service";
 ```
 
 **Test File:**
+
 ```typescript
-import { CurrentMyChallengeService } from './index';
+import { CurrentMyChallengeService } from "./index";
 // Tests automatically use whichever version is exported as "Current"
 ```
 
@@ -71,9 +74,10 @@ npm run test:coverage
 ### Manual Creation
 
 1. **Create service file(s)**:
+
 ```typescript
 // my-challenge.service.ts
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: "root" })
 export class MyChallengeService {
   solve(input: any): any {
     // Your implementation
@@ -82,25 +86,27 @@ export class MyChallengeService {
 ```
 
 2. **Create barrel file**:
+
 ```typescript
 // index.ts
-export { MyChallengeService as CurrentMyChallengeService } from './my-challenge.service';
+export { MyChallengeService as CurrentMyChallengeService } from "./my-challenge.service";
 ```
 
 3. **Create test file**:
+
 ```typescript
 // my-challenge.service.spec.ts
-import { CurrentMyChallengeService } from './index';
+import { CurrentMyChallengeService } from "./index";
 
-describe('MyChallenge', () => {
+describe("MyChallenge", () => {
   let service: CurrentMyChallengeService;
-  
+
   beforeEach(() => {
     TestBed.configureTestingModule({});
     service = TestBed.inject(CurrentMyChallengeService);
   });
-  
-  it('should work', () => {
+
+  it("should work", () => {
     expect(service.solve(input)).toBe(expected);
   });
 });
@@ -116,13 +122,14 @@ Angular uses **Jasmine** for testing. Key concepts:
 - `expect()`: Makes assertions
 
 **Example:**
+
 ```typescript
-describe('Feature', () => {
+describe("Feature", () => {
   beforeEach(() => {
     // Setup
   });
-  
-  it('should do something', () => {
+
+  it("should do something", () => {
     expect(result).toBe(expected);
   });
 });
@@ -131,6 +138,7 @@ describe('Feature', () => {
 ## Example Challenge
 
 See `src/challenges/largest-sum/` for a complete example with:
+
 - Two implementations (v1 and v2)
 - Comprehensive tests
 - Barrel file setup
@@ -148,6 +156,7 @@ npm install
 ### Browser issues
 
 Tests use ChromeHeadless by default. If Chrome isn't available:
+
 1. Install Chrome
 2. Or modify `karma.conf.js` to use a different browser
 

@@ -88,6 +88,7 @@ practice-labs/
 ### 1. Root Configuration (Created First)
 
 **Files Created:**
+
 - `settings.gradle` - Defines multi-module project structure
 - `build.gradle` - Root tasks (like `testAll`)
 - `gradle.properties` - Java version configuration
@@ -98,6 +99,7 @@ practice-labs/
 Establishes the foundation for the entire project. Gradle orchestrates the Java module.
 
 **Dependencies:**
+
 - Requires: Java 17+ installed
 - Used by: Java module
 
@@ -108,28 +110,34 @@ Establishes the foundation for the entire project. Gradle orchestrates the Java 
 **Files Created in Order:**
 
 1. **`java-practice/build.gradle`**
+
    - Configures Java 17 toolchain
    - Sets up JUnit 5 dependencies
    - Configures test task to pass PRACTICE_TARGET env var
 
 2. **`java-practice/src/main/java/practice/util/TargetResolver.java`**
+
    - Core mechanism for auto-selecting latest implementation
    - Uses reflection to scan classpath
    - Reads PRACTICE_TARGET environment variable
 
 3. **`java-practice/src/main/java/practice/largestsum/LargestSumSolution.java`**
+
    - Interface that all attempts implement
    - Ensures consistent method signature
 
 4. **`java-practice/src/main/java/practice/largestsum/LargestSum.java`**
+
    - First implementation (attempt 1)
    - Implements LargestSumSolution interface
 
 5. **`java-practice/src/test/java/practice/largestsum/LargestSumTest.java`**
+
    - Test class that never changes
    - Uses TargetResolver in @BeforeEach to get latest implementation
 
 6. **`java-practice/src/main/java/practice/largestsum/LargestSum2.java`**
+
    - Second implementation (demonstrates version switching)
 
 7. **`scripts/new-java-challenge.sh`**
@@ -137,10 +145,12 @@ Establishes the foundation for the entire project. Gradle orchestrates the Java 
    - Creates implementation + test files
 
 **Dependencies:**
+
 - Requires: Gradle wrapper, Java 17+
 - Used by: Root `testAll` task, CI/CD
 
 **How It Connects:**
+
 ```
 Root build.gradle
   └── includes :java-practice module
@@ -156,18 +166,22 @@ Root build.gradle
 **Files Created in Order:**
 
 1. **`js-practice/package.json`**
+
    - Defines Jest as test framework
    - Scripts: `test`, `test:watch`, `test:coverage`
 
 2. **`js-practice/utils/targetResolver.js`**
+
    - Similar to Java version but uses file system scanning
    - Reads PRACTICE_TARGET environment variable
 
 3. **`js-practice/practice/largestSum.js`**
+
    - First implementation
    - Exports `{ bigSum }` function
 
 4. **`js-practice/tests/largestSum.test.js`**
+
    - Uses Jest (describe, test, expect)
    - Imports from targetResolver
 
@@ -175,10 +189,12 @@ Root build.gradle
    - Second implementation (demonstrates version switching)
 
 **Dependencies:**
+
 - Requires: Node.js 16+, npm
 - Standalone (not connected to Gradle)
 
 **How It Connects:**
+
 ```
 package.json
   └── defines "test" script
@@ -194,16 +210,20 @@ package.json
 **Files Created in Order:**
 
 1. **`sql-practice/seed.sql`**
+
    - Creates tables (customers, orders)
    - Inserts sample data
 
 2. **`sql-practice/challenges/top_n_customers.sql`**
+
    - Example SQL query
 
 3. **`sql-practice/expected/top_n_customers.txt`**
+
    - Expected output for validation
 
 4. **`scripts/run-sql-tests.sh`**
+
    - Creates SQLite database
    - Loads seed data
    - Runs each challenge query
@@ -213,10 +233,12 @@ package.json
    - SQL-specific documentation
 
 **Dependencies:**
+
 - Requires: sqlite3 command-line tool
 - Standalone (not connected to Gradle or npm)
 
 **How It Connects:**
+
 ```
 run-sql-tests.sh
   └── creates temp database
@@ -232,50 +254,62 @@ run-sql-tests.sh
 **Files Created in Order:**
 
 1. **`angular-practice/package.json`**
+
    - Angular 17 dependencies
    - Karma + Jasmine for testing
    - Test scripts
 
 2. **`angular-practice/tsconfig.json`**
+
    - TypeScript compiler configuration
    - ES2022 target, strict mode
 
 3. **`angular-practice/angular.json`**
+
    - Angular CLI configuration
    - Test builder settings
 
 4. **`angular-practice/karma.conf.js`**
+
    - Test runner configuration
    - Chrome/ChromeHeadless browsers
    - Coverage reporting
 
 5. **`angular-practice/tsconfig.spec.json`**
+
    - TypeScript config for tests
    - Includes Jasmine types
 
 6. **`angular-practice/src/test.ts`**
+
    - Test environment initialization
    - Loaded by Karma
 
 7. **`angular-practice/src/services/target-resolver.service.ts`**
+
    - Service explaining barrel file pattern
    - Info only (doesn't actually resolve)
 
 8. **`angular-practice/src/challenges/largest-sum/largest-sum.service.ts`**
+
    - First implementation
 
 9. **`angular-practice/src/challenges/largest-sum/largest-sum-v2.service.ts`**
+
    - Second implementation (different algorithm)
 
 10. **`angular-practice/src/challenges/largest-sum/index.ts`**
+
     - Barrel file that exports "Current" version
     - Change export to switch which version is tested
 
 11. **`angular-practice/src/challenges/largest-sum/largest-sum.service.spec.ts`**
+
     - Tests that import from barrel file
     - Automatically test whichever version is "Current"
 
 12. **`scripts/new-angular-challenge.sh`**
+
     - Generate Angular challenges
     - Creates service + spec + barrel files
 
@@ -283,10 +317,12 @@ run-sql-tests.sh
     - Angular-specific documentation
 
 **Dependencies:**
+
 - Requires: Node.js 16+, npm, Chrome (for tests)
 - Optional: Repository works without Angular installed
 
 **How It Connects:**
+
 ```
 angular.json
   └── defines test builder
@@ -298,6 +334,7 @@ angular.json
 
 **Key Difference from Java/JavaScript:**
 Angular uses **static exports** (barrel files) instead of dynamic discovery because:
+
 - TypeScript/Angular requires compile-time type checking
 - Import paths must be known at build time
 - More explicit = easier to debug
@@ -315,26 +352,26 @@ Angular uses **static exports** (barrel files) instead of dynamic discovery beca
 5. **`.github/workflows/ci.yml`** - GitHub Actions workflow
 
 **CI/CD Workflow:**
+
 ```yaml
 CI runs on: push, pull_request
 
-Jobs:
-  1. java-tests
-       → Setup JDK 17
-       → Run ./gradlew :java-practice:test
-  
+Jobs: 1. java-tests
+  → Setup JDK 17
+  → Run ./gradlew :java-practice:test
+
   2. javascript-tests
-       → Setup Node 20
-       → npm install in js-practice
-       → npm test
-  
+  → Setup Node 20
+  → npm install in js-practice
+  → npm test
+
   3. sql-tests
-       → Install sqlite3
-       → Run ./scripts/run-sql-tests.sh
-  
+  → Install sqlite3
+  → Run ./scripts/run-sql-tests.sh
+
   4. all-tests-complete
-       → Depends on all above jobs
-       → Confirms everything passed
+  → Depends on all above jobs
+  → Confirms everything passed
 ```
 
 ---
@@ -344,6 +381,7 @@ Jobs:
 ### Test Execution Flow
 
 #### Java
+
 ```
 User runs: ./gradlew :java-practice:test
 
@@ -360,6 +398,7 @@ User runs: ./gradlew :java-practice:test
 ```
 
 #### JavaScript
+
 ```
 User runs: npm test (in js-practice)
 
@@ -376,6 +415,7 @@ User runs: npm test (in js-practice)
 ```
 
 #### Angular
+
 ```
 User runs: npm test (in angular-practice)
 
@@ -390,6 +430,7 @@ User runs: npm test (in angular-practice)
 ```
 
 #### SQL
+
 ```
 User runs: ./scripts/run-sql-tests.sh
 
@@ -413,6 +454,7 @@ User runs: ./scripts/run-sql-tests.sh
 **Problem:** How do tests find the latest implementation without manual updates?
 
 **Java Solution: Reflection + Classpath Scanning**
+
 ```java
 // 1. Convert package to path
 String packagePath = "practice.largestsum".replace('.', '/');
@@ -422,31 +464,33 @@ ClassLoader cl = Thread.currentThread().getContextClassLoader();
 Enumeration<URL> resources = cl.getResources(packagePath);
 
 // 3. List .class files in directory
-File[] files = directory.listFiles((dir, name) -> 
+File[] files = directory.listFiles((dir, name) ->
     name.endsWith(".class") && name.startsWith("LargestSum"));
 
 // 4. Extract version numbers, sort, return highest
 ```
 
 **JavaScript Solution: File System Scanning**
+
 ```javascript
 // 1. Read directory contents
-const files = fs.readdirSync('practice/');
+const files = fs.readdirSync("practice/");
 
 // 2. Filter by pattern (largestSum*.js)
 const pattern = /^largestSum(\d*)\.js$/;
-const matches = files.filter(file => pattern.test(file));
+const matches = files.filter((file) => pattern.test(file));
 
 // 3. Extract version numbers, sort, return highest
 ```
 
 **Angular Solution: Barrel File (Manual)**
+
 ```typescript
 // index.ts - manually edit this line
-export { LargestSumV2Service as CurrentLargestSumService } from './largest-sum-v2.service';
+export { LargestSumV2Service as CurrentLargestSumService } from "./largest-sum-v2.service";
 
 // Tests import "Current" version
-import { CurrentLargestSumService } from './index';
+import { CurrentLargestSumService } from "./index";
 ```
 
 ### 2. Environment Variable Override
@@ -464,6 +508,7 @@ PRACTICE_TARGET=largestSum npm test
 ```
 
 **Why?**
+
 - Compare different implementations
 - Test specific version for debugging
 - Regression testing
@@ -471,6 +516,7 @@ PRACTICE_TARGET=largestSum npm test
 ### 3. Interface/Contract Enforcement
 
 **Java: Interface**
+
 ```java
 public interface LargestSumSolution {
     int bigSum(List<Integer> nums);
@@ -482,12 +528,14 @@ public class LargestSum2 implements LargestSumSolution { ... }
 ```
 
 **JavaScript: Convention**
+
 ```javascript
 // All files export same structure
 module.exports = { bigSum };
 ```
 
 **Angular: TypeScript Interface (implicit)**
+
 ```typescript
 // All services have same method signature
 bigSum(nums: number[] | null | undefined): number
@@ -500,6 +548,7 @@ bigSum(nums: number[] | null | undefined): number
 ### Problem: Java tests fail with ClassNotFoundException
 
 **Symptoms:**
+
 ```
 No implementation found for LargestSum in package practice.largestsum
 ```
@@ -507,11 +556,13 @@ No implementation found for LargestSum in package practice.largestsum
 **Causes & Solutions:**
 
 1. **Files not compiled**
+
    ```bash
    ./gradlew clean build
    ```
 
 2. **Wrong package name**
+
    - Check `package practice.largestsum;` matches directory structure
    - Package should be lowercase
 
@@ -522,6 +573,7 @@ No implementation found for LargestSum in package practice.largestsum
 ### Problem: JavaScript tests fail to find implementation
 
 **Symptoms:**
+
 ```
 No implementation found for largestSum in /path/to/practice
 ```
@@ -529,12 +581,14 @@ No implementation found for largestSum in /path/to/practice
 **Causes & Solutions:**
 
 1. **Wrong directory**
+
    ```javascript
    // Check targetResolver.js default path
-   TargetResolver.resolve('largestSum', './practice');
+   TargetResolver.resolve("largestSum", "./practice");
    ```
 
 2. **File naming**
+
    - Must be: `largestSum.js`, `largestSum2.js`
    - NOT: `LargestSum.js`, `largest-sum.js`
 
@@ -547,6 +601,7 @@ No implementation found for largestSum in /path/to/practice
 ### Problem: Angular tests fail with "Cannot find module"
 
 **Symptoms:**
+
 ```
 Cannot find module './index'
 ```
@@ -554,22 +609,24 @@ Cannot find module './index'
 **Causes & Solutions:**
 
 1. **Barrel file missing**
+
    - Create `index.ts` in challenge folder
    - Export at least one version
 
 2. **Import path wrong**
+
    ```typescript
    // Correct:
-   import { CurrentLargestSumService } from './index';
-   
+   import { CurrentLargestSumService } from "./index";
+
    // Wrong:
-   import { CurrentLargestSumService } from './largest-sum.service';
+   import { CurrentLargestSumService } from "./largest-sum.service";
    ```
 
 3. **Not exported as "Current"**
    ```typescript
    // index.ts must have:
-   export { SomeService as CurrentMyChallengeService } from './some.service';
+   export { SomeService as CurrentMyChallengeService } from "./some.service";
    ```
 
 ### Problem: Tests pass locally but fail in CI
@@ -580,6 +637,7 @@ GitHub Actions shows failures, but `./gradlew test` works locally.
 **Causes & Solutions:**
 
 1. **Files not committed**
+
    ```bash
    git status
    git add .
@@ -587,18 +645,21 @@ GitHub Actions shows failures, but `./gradlew test` works locally.
    ```
 
 2. **Java version mismatch**
+
    - CI uses Java 17
    - Check `gradle.properties`: `javaVersion=17`
 
 3. **Node version mismatch**
+
    - CI uses Node 20
    - Check locally: `node -v`
 
 4. **Missing dependencies**
+
    ```bash
    # JavaScript
    cd js-practice && npm ci
-   
+
    # Angular
    cd angular-practice && npm ci
    ```
@@ -606,6 +667,7 @@ GitHub Actions shows failures, but `./gradlew test` works locally.
 ### Problem: SQL tests show incorrect output formatting
 
 **Symptoms:**
+
 ```
 Expected:
 customer_id  name
@@ -621,6 +683,7 @@ customer_id  name
 **Causes & Solutions:**
 
 1. **Column width differences**
+
    - SQLite formats based on data
    - Capture actual output: `./scripts/run-sql-tests.sh`
    - Update `expected/*.txt` with exact output (including spaces)
@@ -639,9 +702,11 @@ Even after creating `LargestSum2.java`, tests still use `LargestSum`.
 **Causes & Solutions:**
 
 1. **Version naming**
+
    - Must be: `LargestSum2`, NOT `LargestSum_2` or `LargestSum-v2`
 
 2. **Not implementing interface**
+
    ```java
    // Must implement:
    public class LargestSum2 implements LargestSumSolution { ... }
@@ -655,11 +720,13 @@ Even after creating `LargestSum2.java`, tests still use `LargestSum`.
 ### Problem: Generator script fails
 
 **Symptoms:**
+
 ```
 Permission denied: ./scripts/new-java-challenge.sh
 ```
 
 **Solution:**
+
 ```bash
 chmod +x ./scripts/*.sh
 ```
@@ -675,6 +742,7 @@ chmod +x ./scripts/*.sh
 2. **Add test framework** (e.g., pytest)
 
 3. **Implement target resolver**:
+
    - Scan for files matching pattern
    - Extract version numbers
    - Return latest
@@ -694,6 +762,7 @@ Currently, test files have boilerplate but require manual editing. To auto-gener
 1. **Define test template** with placeholders
 
 2. **Add to generator script**:
+
    ```bash
    # In new-java-challenge.sh
    generate_test_cases() {
@@ -702,6 +771,7 @@ Currently, test files have boilerplate but require manual editing. To auto-gener
    ```
 
 3. **Use JavaDoc/comments** to specify test cases:
+
    ```java
    /**
     * @testCase input=[1,2,3] expected=5
