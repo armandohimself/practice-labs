@@ -1,4 +1,4 @@
-package test.java.practice.largestsum;
+package practice.largestsum;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
