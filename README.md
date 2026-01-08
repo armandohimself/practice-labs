@@ -7,6 +7,7 @@ A multi-language practice environment where you can solve the same coding challe
 ### Prerequisites
 
 - **Java 17+** (or Java 21 - see configuration below)
+- **Gradle 8.5+** (included via wrapper)
 - **Node.js 16+** and npm
 - **SQLite3** (for SQL challenges)
 - **Git**
@@ -25,7 +26,7 @@ cd js-practice && npm install && cd ..
 cd angular-practice && npm install && cd ..
 
 # Verify setup - run all tests
-./gradlew testAll                    # Java tests
+./gradlew :java-practice:test        # Java tests (87 challenges, 234+ tests)
 cd js-practice && npm test && cd ..  # JavaScript tests
 ./scripts/run-sql-tests.sh           # SQL tests
 

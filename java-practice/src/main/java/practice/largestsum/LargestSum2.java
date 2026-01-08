@@ -3,7 +3,7 @@ package practice.largestsum;
 import java.util.List;
 
 /**
- * LargestSum2 Challenge
+ * LargestSum2 Challenge - Alternative implementation
  *
  * Find the sum of the two largest integers in a list.
  *

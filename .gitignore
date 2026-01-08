@@ -48,6 +48,12 @@ angular-practice/dist/
 angular-practice/node_modules/
 angular-practice/.angular-cache/
 
+# Migration and temporary files
+temp/
+temp/cloned_challenges/
+*.pyc
+__pycache__/
+
 # Build artifacts
 java-practice/build/
 js-practice/coverage/

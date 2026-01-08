@@ -1,0 +1,33 @@
+package practice.math;
+
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+public class MathClassTest {
+    Lab mc = new Lab();
+
+    /**
+     * MathPow should return 4 with inputs 2 and 2 because 2^2 = 4.
+     */
+    @Test
+    public void mathClassTest1(){
+        double inputA = 2;
+        double inputB = 2;
+        double expected = 4;
+        double actual = mc.mathPow(inputA, inputB);
+        assertEquals(actual, .01, expected);
+    }
+
+    /**
+     * MathPow should return 81 with inputs 3 and 4 because 3^4 = 81.
+     */
+    @Test
+    public void mathClassTest2(){
+        double inputA = 3;
+        double inputB = 4;
+        double expected = 81;
+        double actual = mc.mathPow(inputA, inputB);
+        assertEquals(actual, .01, expected);
+    }
+}
