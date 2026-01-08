@@ -275,7 +275,30 @@ This generates:
 
 ---
 
-## Example Challenge: LargestSum
+## Available Java Challenges
+
+The `java-practice` module includes the following challenges (sourced from [PEPLabs](https://github.com/PEPLabs)):
+
+### Completed Implementations
+
+- **LargestSum** - Find the sum of the two largest integers in a list
+  - [Implementation](java-practice/src/main/java/practice/largestsum/LargestSum.java) | [Tests](java-practice/src/test/java/practice/largestsum/LargestSumTest.java)
+
+### Challenge Scaffolds (Ready for Implementation)
+
+- **HelloWorld** - Return "Hello, world!" string
+- **FizzBuzz** - Return "Fizz", "Buzz", or "FizzBuzz" based on divisibility
+- **EvenOrOdd** - Determine if a number is even or odd
+- **Contains** - Check if an array contains a target value
+- **GetMax** - Find the maximum value in an array
+
+Each challenge includes:
+
+- Interface defining the contract (`<Challenge>Solution.java`)
+- Scaffold implementation with TODO (`<Challenge>.java`)
+- Complete test suite (`<Challenge>Test.java`)
+
+### Example: LargestSum
 
 Find the sum of the two largest integers in a list/array.
 
@@ -289,12 +312,6 @@ Find the sum of the two largest integers in a list/array.
 - Null/empty → `0`
 - Single element → return that element
 - Handles negatives and duplicates
-
-**Implementations:**
-
-- Java: [LargestSum.java](java-practice/src/main/java/practice/largestsum/LargestSum.java)
-- JavaScript: [largestSum.js](js-practice/practice/largestSum.js)
-- Angular: [largest-sum.service.ts](angular-practice/src/challenges/largest-sum/largest-sum.service.ts)
 
 ## Project Structure
 
