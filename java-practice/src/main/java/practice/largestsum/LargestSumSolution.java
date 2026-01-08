@@ -1,4 +1,4 @@
-package practice.largestsum;
+package main.java.practice.largestsum;
 
 import java.util.List;
 

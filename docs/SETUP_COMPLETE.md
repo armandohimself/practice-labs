@@ -60,13 +60,13 @@ cd js-practice && npm test && cd ..
 
 **Java Output:**
 
-```
+```bash
 🎯 Testing latest attempt: practice.largestsum.LargestSum2
 ```
 
 **JavaScript Output:**
 
-```
+```bash
 🎯 Testing latest attempt: largestSum2.js
 ```
 
@@ -111,7 +111,7 @@ Tests in `LargestSumTest.java` and `largestSum.test.js` never need editing when 
 
 ## Project Structure Summary
 
-```
+```bash
 practice-labs/
 ├── java-practice/          ✅ Java 17 + JUnit 5
 │   ├── src/main/java/practice/

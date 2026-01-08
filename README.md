@@ -41,7 +41,7 @@ The key feature of this practice environment is that **tests automatically run a
 
 **Java Example:**
 
-```
+```bash
 java-practice/src/main/java/practice/largestsum/
 ├── LargestSum.java      ← First attempt
 ├── LargestSum2.java     ← Second attempt (tests run this)
@@ -59,7 +59,7 @@ void setUp() throws Exception {
 
 **JavaScript Example:**
 
-```
+```bash
 js-practice/practice/
 ├── largestSum.js        ← First attempt
 ├── largestSum2.js       ← Second attempt (tests run this)
@@ -82,7 +82,7 @@ PRACTICE_TARGET=largestSum2 npm test --prefix js-practice
 
 ### ☕ Java (Gradle + JUnit 5)
 
-#### Run Tests
+#### Running Java Tests
 
 ```bash
 # All Java tests
@@ -128,7 +128,7 @@ Default is **Java 17**. To switch to Java 21:
 
 ### 🟨 JavaScript (Node + Jest)
 
-#### Run Tests
+#### Running JavaScript Test
 
 ```bash
 cd js-practice
@@ -179,7 +179,7 @@ describe("MyChallenge", () => {
 
 **Note:** Angular is optional. The repository works fine without it.
 
-#### Run Tests
+#### Running Angular Test
 
 ```bash
 cd angular-practice
@@ -298,7 +298,7 @@ Find the sum of the two largest integers in a list/array.
 
 ## Project Structure
 
-```
+```bash
 practice-labs/
 ├── java-practice/              # Java module (Gradle)
 │   ├── src/main/java/practice/

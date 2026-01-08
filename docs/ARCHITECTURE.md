@@ -14,7 +14,7 @@ This document explains how all the pieces of the Practice Labs repository connec
 
 ## Repository Structure
 
-```
+```bash
 practice-labs/
 ├── Root Build System (Gradle)
 │   ├── settings.gradle              # Project structure definition
@@ -151,7 +151,7 @@ Establishes the foundation for the entire project. Gradle orchestrates the Java 
 
 **How It Connects:**
 
-```
+```bash
 Root build.gradle
   └── includes :java-practice module
         └── runs tests in java-practice/build.gradle
@@ -195,7 +195,7 @@ Root build.gradle
 
 **How It Connects:**
 
-```
+```bash
 package.json
   └── defines "test" script
         └── runs Jest
@@ -239,7 +239,7 @@ package.json
 
 **How It Connects:**
 
-```
+```bash
 run-sql-tests.sh
   └── creates temp database
         └── loads seed.sql
@@ -323,7 +323,7 @@ run-sql-tests.sh
 
 **How It Connects:**
 
-```
+```bash
 angular.json
   └── defines test builder
         └── uses karma.conf.js
@@ -382,7 +382,7 @@ Jobs: 1. java-tests
 
 #### Java
 
-```
+```bash
 User runs: ./gradlew :java-practice:test
 
 1. Gradle reads java-practice/build.gradle
@@ -399,7 +399,7 @@ User runs: ./gradlew :java-practice:test
 
 #### JavaScript
 
-```
+```bash
 User runs: npm test (in js-practice)
 
 1. package.json "test" script runs Jest
@@ -416,7 +416,7 @@ User runs: npm test (in js-practice)
 
 #### Angular
 
-```
+```bash
 User runs: npm test (in angular-practice)
 
 1. package.json "test" script runs Angular CLI
@@ -431,7 +431,7 @@ User runs: npm test (in angular-practice)
 
 #### SQL
 
-```
+```bash
 User runs: ./scripts/run-sql-tests.sh
 
 1. Script creates temp SQLite database
@@ -453,7 +453,7 @@ User runs: ./scripts/run-sql-tests.sh
 
 **Problem:** How do tests find the latest implementation without manual updates?
 
-**Java Solution: Reflection + Classpath Scanning**
+#### Java Solution: Reflection + Classpath Scanning
 
 ```java
 // 1. Convert package to path
@@ -470,7 +470,7 @@ File[] files = directory.listFiles((dir, name) ->
 // 4. Extract version numbers, sort, return highest
 ```
 
-**JavaScript Solution: File System Scanning**
+#### JavaScript Solution: File System Scanning
 
 ```javascript
 // 1. Read directory contents
@@ -483,7 +483,7 @@ const matches = files.filter((file) => pattern.test(file));
 // 3. Extract version numbers, sort, return highest
 ```
 
-**Angular Solution: Barrel File (Manual)**
+#### Angular Solution: Barrel File (Manual)
 
 ```typescript
 // index.ts - manually edit this line
@@ -515,7 +515,7 @@ PRACTICE_TARGET=largestSum npm test
 
 ### 3. Interface/Contract Enforcement
 
-**Java: Interface**
+#### Java: Interface
 
 ```java
 public interface LargestSumSolution {
@@ -527,14 +527,14 @@ public class LargestSum implements LargestSumSolution { ... }
 public class LargestSum2 implements LargestSumSolution { ... }
 ```
 
-**JavaScript: Convention**
+#### JavaScript: Convention
 
 ```javascript
 // All files export same structure
 module.exports = { bigSum };
 ```
 
-**Angular: TypeScript Interface (implicit)**
+#### Angular: TypeScript Interface (implicit)
 
 ```typescript
 // All services have same method signature
@@ -549,7 +549,7 @@ bigSum(nums: number[] | null | undefined): number
 
 **Symptoms:**
 
-```
+```bash
 No implementation found for LargestSum in package practice.largestsum
 ```
 
@@ -574,7 +574,7 @@ No implementation found for LargestSum in package practice.largestsum
 
 **Symptoms:**
 
-```
+```bash
 No implementation found for largestSum in /path/to/practice
 ```
 
@@ -593,6 +593,7 @@ No implementation found for largestSum in /path/to/practice
    - NOT: `LargestSum.js`, `largest-sum.js`
 
 3. **Module not exported**
+
    ```javascript
    // File must end with:
    module.exports = { bigSum };
@@ -602,7 +603,7 @@ No implementation found for largestSum in /path/to/practice
 
 **Symptoms:**
 
-```
+```bash
 Cannot find module './index'
 ```
 
@@ -624,6 +625,7 @@ Cannot find module './index'
    ```
 
 3. **Not exported as "Current"**
+
    ```typescript
    // index.ts must have:
    export { SomeService as CurrentMyChallengeService } from "./some.service";
@@ -668,7 +670,7 @@ GitHub Actions shows failures, but `./gradlew test` works locally.
 
 **Symptoms:**
 
-```
+```bash
 Expected:
 customer_id  name
 -----------  ----
@@ -689,6 +691,7 @@ customer_id  name
    - Update `expected/*.txt` with exact output (including spaces)
 
 2. **Line ending differences** (Windows vs Unix)
+
    ```bash
    # Convert to Unix line endings
    dos2unix sql-practice/expected/*.txt
@@ -713,6 +716,7 @@ Even after creating `LargestSum2.java`, tests still use `LargestSum`.
    ```
 
 3. **Build cache**
+
    ```bash
    ./gradlew clean build
    ```
@@ -721,7 +725,7 @@ Even after creating `LargestSum2.java`, tests still use `LargestSum`.
 
 **Symptoms:**
 
-```
+```bash
 Permission denied: ./scripts/new-java-challenge.sh
 ```
 

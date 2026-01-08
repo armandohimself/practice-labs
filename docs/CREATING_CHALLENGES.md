@@ -24,60 +24,60 @@ This automatically creates:
 
 1. **Create an interface** (optional but recommended for multiple attempts):
 
-```java
-// java-practice/src/main/java/practice/mychallenge/MyChallengeSolution.java
-package practice.mychallenge;
+    ```java
+    // java-practice/src/main/java/practice/mychallenge/MyChallengeSolution.java
+    package practice.mychallenge;
 
-public interface MyChallengeSolution {
-    ResultType solve(InputType input);
-}
-```
+    public interface MyChallengeSolution {
+        ResultType solve(InputType input);
+    }
+    ```
 
 2. **Create implementation(s)**:
 
-```java
-// java-practice/src/main/java/practice/mychallenge/MyChallenge.java
-package practice.mychallenge;
+    ```java
+    // java-practice/src/main/java/practice/mychallenge/MyChallenge.java
+    package practice.mychallenge;
 
-public class MyChallenge implements MyChallengeSolution {
-    @Override
-    public ResultType solve(InputType input) {
-        // Your solution
+    public class MyChallenge implements MyChallengeSolution {
+        @Override
+        public ResultType solve(InputType input) {
+            // Your solution
+        }
     }
-}
 
-// Later attempts: MyChallenge2.java, MyChallenge3.java, etc.
-```
+    // Later attempts: MyChallenge2.java, MyChallenge3.java, etc.
+    ```
 
 3. **Create test file**:
 
-```java
-// java-practice/src/test/java/practice/mychallenge/MyChallengeTest.java
-package practice.mychallenge;
+    ```java
+    // java-practice/src/test/java/practice/mychallenge/MyChallengeTest.java
+    package practice.mychallenge;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import practice.util.TargetResolver;
-import static org.junit.jupiter.api.Assertions.*;
+    import org.junit.jupiter.api.BeforeEach;
+    import org.junit.jupiter.api.DisplayName;
+    import org.junit.jupiter.api.Test;
+    import practice.util.TargetResolver;
+    import static org.junit.jupiter.api.Assertions.*;
 
-@DisplayName("MyChallenge Tests")
-class MyChallengeTest {
+    @DisplayName("MyChallenge Tests")
+    class MyChallengeTest {
 
-    private MyChallengeSolution solution;
+        private MyChallengeSolution solution;
 
-    @BeforeEach
-    void setUp() throws Exception {
-        solution = TargetResolver.resolve("practice.mychallenge", "MyChallenge");
+        @BeforeEach
+        void setUp() throws Exception {
+            solution = TargetResolver.resolve("practice.mychallenge", "MyChallenge");
+        }
+
+        @Test
+        @DisplayName("Test case 1")
+        void testExample() {
+            assertEquals(expected, solution.solve(input));
+        }
     }
-
-    @Test
-    @DisplayName("Test case 1")
-    void testExample() {
-        assertEquals(expected, solution.solve(input));
-    }
-}
-```
+    ```
 
 ## JavaScript Challenges
 

@@ -19,7 +19,7 @@ Unlike Java and JavaScript which use dynamic class/file discovery, Angular uses 
 
 **Structure:**
 
-```
+```bash
 src/challenges/my-challenge/
 ├── my-challenge.service.ts       # Version 1
 ├── my-challenge-v2.service.ts    # Version 2
@@ -75,42 +75,42 @@ npm run test:coverage
 
 1. **Create service file(s)**:
 
-```typescript
-// my-challenge.service.ts
-@Injectable({ providedIn: "root" })
-export class MyChallengeService {
-  solve(input: any): any {
-    // Your implementation
-  }
-}
-```
+    ```typescript
+    // my-challenge.service.ts
+    @Injectable({ providedIn: "root" })
+    export class MyChallengeService {
+    solve(input: any): any {
+        // Your implementation
+    }
+    }
+    ```
 
 2. **Create barrel file**:
 
-```typescript
-// index.ts
-export { MyChallengeService as CurrentMyChallengeService } from "./my-challenge.service";
-```
+    ```typescript
+    // index.ts
+    export { MyChallengeService as CurrentMyChallengeService } from "./my-challenge.service";
+    ```
 
 3. **Create test file**:
 
-```typescript
-// my-challenge.service.spec.ts
-import { CurrentMyChallengeService } from "./index";
+    ```typescript
+    // my-challenge.service.spec.ts
+    import { CurrentMyChallengeService } from "./index";
 
-describe("MyChallenge", () => {
-  let service: CurrentMyChallengeService;
+    describe("MyChallenge", () => {
+    let service: CurrentMyChallengeService;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(CurrentMyChallengeService);
-  });
+    beforeEach(() => {
+        TestBed.configureTestingModule({});
+        service = TestBed.inject(CurrentMyChallengeService);
+    });
 
-  it("should work", () => {
-    expect(service.solve(input)).toBe(expected);
-  });
-});
-```
+    it("should work", () => {
+        expect(service.solve(input)).toBe(expected);
+    });
+    });
+    ```
 
 ## Test Structure
 
