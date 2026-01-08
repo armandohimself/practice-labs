@@ -6,10 +6,6 @@ import practice.util.TargetResolver;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
-
-import org.junit.BeforeClass;
-
 public class IndexOfTest {
     
     private IndexOfSolution solution;
@@ -17,12 +13,6 @@ public class IndexOfTest {
     @BeforeEach
     void setUp() throws Exception {
         solution = TargetResolver.resolve("practice.indexof", "IndexOf");
-    }
-
-public static 
-    @BeforeClass
-    public static void setUp(){
-        io = new IndexOf();
     }
 
     /**
@@ -33,7 +23,7 @@ public static
         int[] input = {0, 1, 2, 7, 4};
         int target = 7;
         int expected = 3;
-        assertEquals(expected, io.getIndex(input, target));
+        assertEquals(expected, solution.getIndex(input, target));
     }
     /**
      * in an int array {9, 5, 8, 7, 1}, the value 9 should be at position 0.
@@ -43,7 +33,7 @@ public static
         int[] input = {9, 5, 8, 7, 1};
         int target = 9;
         int expected = 0;
-        assertEquals(expected, io.getIndex(input, target));
+        assertEquals(expected, solution.getIndex(input, target));
     }
     /**
      * in an int array {9, 5, 8, 7, 1}, the value 3 does not exist, so getIndex should return -1.
@@ -53,6 +43,6 @@ public static
         int[] input = {9, 5, 8, 7, 1};
         int target = 3;
         int expected = -1;
-        assertEquals(expected, io.getIndex(input, target));
+        assertEquals(expected, solution.getIndex(input, target));
     }
 }

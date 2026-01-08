@@ -6,9 +6,6 @@ import practice.util.TargetResolver;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
-
-
 public class InsertPositionTest {
     
 

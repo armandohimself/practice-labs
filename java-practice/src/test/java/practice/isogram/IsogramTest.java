@@ -6,10 +6,6 @@ import practice.util.TargetResolver;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
-
-import org.junit.Before;
-
 public class IsogramTest {
     
     
@@ -20,11 +16,6 @@ public class IsogramTest {
         solution = TargetResolver.resolve("practice.isogram", "Isogram");
     }
 
-@Before
-    public void setUp(){
-        iso = new Isogram();
-    }
-
     /**
      * cat contains all its letters once, so it is an solution.
      */
@@ -32,7 +23,7 @@ public class IsogramTest {
     public void isoTest1(){
         String input = "cat";
         boolean expected = true;
-        boolean actual = iso.isIsogram(input);
+        boolean actual = solution.isIsogram(input);
         assertEquals(expected, actual);
     }
 
@@ -43,7 +34,7 @@ public class IsogramTest {
     public void isoTest2(){
         String input = "isogram";
         boolean expected = true;
-        boolean actual = iso.isIsogram(input);
+        boolean actual = solution.isIsogram(input);
         assertEquals(expected, actual);
     }
 
@@ -54,7 +45,7 @@ public class IsogramTest {
     public void isoTest3(){
         String input = "uncopyrightable";
         boolean expected = true;
-        boolean actual = iso.isIsogram(input);
+        boolean actual = solution.isIsogram(input);
         assertEquals(expected, actual);
     }
 
@@ -65,7 +56,7 @@ public class IsogramTest {
     public void isoTest4(){
         String input = "egg";
         boolean expected = false;
-        boolean actual = iso.isIsogram(input);
+        boolean actual = solution.isIsogram(input);
         assertEquals(expected, actual);
     }
 
@@ -76,7 +67,7 @@ public class IsogramTest {
     public void isoTest5(){
         String input = "java";
         boolean expected = false;
-        boolean actual = iso.isIsogram(input);
+        boolean actual = solution.isIsogram(input);
         assertEquals(expected, actual);
     }
 
@@ -87,7 +78,7 @@ public class IsogramTest {
     public void isoTest6(){
         String input = "programming";
         boolean expected = false;
-        boolean actual = iso.isIsogram(input);
+        boolean actual = solution.isIsogram(input);
         assertEquals(expected, actual);
     }
 }

@@ -6,15 +6,7 @@ import practice.util.TargetResolver;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
-
-import static org.junit.assertEquals;
-
-
-public class Search2dArrayTest {
-    
-
-    
+public class Search2dArrayTest {    
     private Search2dArraySolution solution;
 
     @BeforeEach

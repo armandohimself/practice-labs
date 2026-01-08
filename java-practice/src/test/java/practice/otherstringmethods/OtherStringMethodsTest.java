@@ -6,10 +6,6 @@ import practice.util.TargetResolver;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
-
-import org.junit.BeforeClass;
-
 public class OtherStringMethodsTest {
     
     private OtherStringMethodsSolution solution;
@@ -19,25 +15,19 @@ public class OtherStringMethodsTest {
         solution = TargetResolver.resolve("practice.otherstringmethods", "OtherStringMethods");
     }
 
-static 
-    @BeforeClass
-    public static void setUp(){
-        osm = new OtherStringMethods();
-    }
-
     /**
      * the substring of "banana", starting at 0 inclusive and ending at 3 exclusive, is "ban".
      */
     @Test
     public void partOfStringTest1(){
-        assertEquals(osm.partOfString("banana", 0, 3), "ban");
+        assertEquals(solution.partOfString("banana", 0, 3), "ban");
     }
     /**
      * the substring of "apple", starting at 1 inclusive and ending at 5 exclusive, is "pple".
      */
     @Test
     public void partOfStringTest2(){
-        assertEquals(osm.partOfString("apple", 1, 5), "pple");
+        assertEquals(solution.partOfString("apple", 1, 5), "pple");
     }
 
     /**
@@ -45,7 +35,7 @@ static
      */
     @Test
     public void compareToTest1(){
-        assertTrue(osm.compareLexigraphically("banana", "apple") > 0);
+        assertTrue(solution.compareLexigraphically("banana", "apple") > 0);
     }
 
     /**
@@ -53,7 +43,7 @@ static
      */
     @Test
     public void compareToTest2(){
-        assertTrue(osm.compareLexigraphically("monkey", "penguin") < 0);
+        assertTrue(solution.compareLexigraphically("monkey", "penguin") < 0);
     }
 
     /**
@@ -61,7 +51,7 @@ static
      */
     @Test
     public void compareToTest3(){
-        assertTrue(osm.compareLexigraphically("java", "java") == 0);
+        assertTrue(solution.compareLexigraphically("java", "java") == 0);
     }
 
     /**
@@ -72,7 +62,7 @@ static
         String input = "banana apple pear";
         String splitAround = " ";
         String[] expected = {"banana", "apple", "pear"};
-        assertArrayEquals(osm.splitStringIntoMultipleStrings(input, splitAround), expected);
+        assertArrayEquals(solution.splitStringIntoMultipleStrings(input, splitAround), expected);
     }
 
     /**
@@ -84,6 +74,6 @@ static
         String input = "src.main.java";
         String splitAround = "\\.";
         String[] expected = {"src", "main", "java"};
-        assertArrayEquals(osm.splitStringIntoMultipleStrings(input, splitAround), expected);
+        assertArrayEquals(solution.splitStringIntoMultipleStrings(input, splitAround), expected);
     }
 }

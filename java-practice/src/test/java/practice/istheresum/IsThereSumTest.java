@@ -6,10 +6,6 @@ import practice.util.TargetResolver;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
-
-import org.junit.BeforeClass;
-
 public class IsThereSumTest {
     
     private IsThereSumSolution solution;
@@ -17,12 +13,6 @@ public class IsThereSumTest {
     @BeforeEach
     void setUp() throws Exception {
         solution = TargetResolver.resolve("practice.istheresum", "IsThereSum");
-    }
-
-public static 
-    @BeforeClass
-    public static void setUp(){
-        its = new IsThereSum();
     }
 
     /**
@@ -33,7 +23,7 @@ public static
         int[] input = {2, 2, 3, 4, 5};
         int target = 4;
         boolean expected = true;
-        assertEquals(expected, its.check(input, target));
+        assertEquals(expected, solution.check(input, target));
     }
     /**
      * Given the input {2, 2, 3, 4, 5} and a target 5, there is a sum of 4 of 2+3.
@@ -43,7 +33,7 @@ public static
         int[] input = {2, 2, 3, 4, 5};
         int target = 5;
         boolean expected = true;
-        assertEquals(expected, its.check(input, target));
+        assertEquals(expected, solution.check(input, target));
     }
     /**
      * Given the input {2, 2, 3, 4, 5} and a target 11, there is no possible pair of numbers for a sum.
@@ -53,7 +43,7 @@ public static
         int[] input = {2, 2, 3, 4, 5};
         int target = 11;
         boolean expected = false;
-        assertEquals(expected, its.check(input, target));
+        assertEquals(expected, solution.check(input, target));
     }
     /**
      * Given the input {2, 2, 3, 4, 5} and a target 10, there no possible pair of numbers for a sum because
@@ -64,6 +54,6 @@ public static
         int[] input = {2, 2, 3, 4, 5};
         int target = 10;
         boolean expected = false;
-        assertEquals(expected, its.check(input, target));
+        assertEquals(expected, solution.check(input, target));
     }
 }
