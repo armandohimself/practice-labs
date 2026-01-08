@@ -1,7 +1,7 @@
 customer_id  name          total_spent
 -----------  ------------  -----------
-9            Ivy Martinez  3500
-4            Diana Prince  3200
-2            Bob Smith     2300.5
-7            Grace Lee     2100
-5            Eve Wilson    1750.75
+9            Ivy Martinez  3500       
+4            Diana Prince  3200       
+2            Bob Smith     2300.5     
+7            Grace Lee     2100       
+5            Eve Wilson    1750.75    
