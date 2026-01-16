@@ -3,22 +3,42 @@ package practice.evennumbers;
 /**
  * EvenNumbers Challenge
  *
- * TODO: Add challenge description here
+ * Find the number of even values in the array that are present before the first occurrence of X.
  *
  * Example:
- *   Input: ...
- *   Output: ...
+ *   Input: A = [1, 4, 2, 6, 3], N = 5, X = 6
+ *   Output: 2 (numbers 4 and 2 are even and come before 6)
  */
 public class EvenNumbers {
 
     /**
-     * TODO: Add method signature and implementation
+     * Counts the number of even values in the array before the first occurrence of X.
      *
-     * @param input Description
-     * @return Description
+     * @param A the array of integers
+     * @param N the size of the array
+     * @param X the value to find (always present in the array)
+     * @return the count of even numbers before the first occurrence of X
      */
-    public Object solve(Object input) {
-        // TODO: Implement your solution here
-        throw new UnsupportedOperationException("Not implemented yet");
+    public int evenNumbers(int[] A, int N, int X) {
+
+        //! Implement your solution below
+        int count = 0;
+
+        for (int a: A) {
+            System.out.println("Current number: " + a + " Current X: " + X);
+
+            // Guard rails - assume first index has stop value
+            if (a == X) {
+                break;
+            }
+
+            // Otherwise find the even number
+            if (a % 2 == 0) {
+                // Then increment the frequency counter
+                count++;
+            }
+        }
+
+        return count;
     }
 }
